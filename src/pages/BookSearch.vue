@@ -29,6 +29,34 @@
           </v-btn>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col cols="12" md="6" v-for="(book, i) in searchResult" :key="i">
+          <v-card class="mx-auto">
+            <v-row>
+              <v-col cols="4">
+                <v-img :src="book.image"></v-img>
+              </v-col>
+              <v-col cols="8">
+                <v-card-title>{{book.title}}</v-card-title>
+                {{book.description}}
+                <v-spacer></v-spacer>
+                <v-card-actions>
+                  <v-btn
+                    fab
+                    dark
+                    color="indigo"
+                    @click="addBookList(i)"
+                  >
+                    <v-icon dark>
+                      mdi-plus
+                    </v-icon>
+                  </v-btn>
+                </v-card-actions>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

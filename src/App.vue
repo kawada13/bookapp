@@ -5,6 +5,7 @@
       <v-container>
        <router-view 
        @add-book-list="addbook"
+       :books="books"
        />
       </v-container>
     </v-main>
@@ -52,6 +53,8 @@ export default {
       });
       // this.newbook = '';
       this.savebooks();
+      // console.log(this.books.slice(-1)[0].id);
+      this.goToEditPage(this.books.slice(-1)[0].id)
     },
     removebook(x) {
       this.books.splice(x, 1);
@@ -60,6 +63,9 @@ export default {
     savebooks() {
       const parsed = JSON.stringify(this.books);
       localStorage.setItem('books', parsed);
+    },
+    goToEditPage(index) {
+      this.$router.push({ name: 'BookEdit', params: { id: index } })
     }
   }
 

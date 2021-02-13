@@ -1,7 +1,35 @@
 <template>
   <div>
-    <input type="text" v-model="keyword">
-    <button @click="search(keyword)">検索する</button>
+    <v-container>
+      <v-row>
+        <v-col cols="6">
+          <v-text-field
+          label="本のタイトルを検索"
+          v-model="keyword"
+          :rules="[v => !!v || 'この項目は必須です']"
+          >
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="3">
+          <v-btn
+          color="primary"
+          @click="search(keyword)"
+          >
+          検索する
+          </v-btn>
+        </v-col>
+        <v-col cols="3">
+          <v-btn
+          color="secondary"
+          to="/"
+          >
+          一覧に戻る
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 

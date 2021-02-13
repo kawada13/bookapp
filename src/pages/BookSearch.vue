@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-container>
       <v-row>
         <v-col cols="6">
           <v-text-field
@@ -40,6 +39,7 @@
                 <v-card-title>{{book.title}}</v-card-title>
                 {{book.description}}
                 <v-spacer></v-spacer>
+                {{i}}
                 <v-card-actions>
                   <v-btn
                     fab
@@ -57,7 +57,6 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
   </div>
 </template>
 
@@ -67,10 +66,13 @@ export default {
   data() {
     return {
       keyword: '',
-      searchResult: []
+      searchResult: [],
     }
   },
   methods: {
+    addBookList(index) {
+      this.$emit('add-book-list', this.searchResult[index])
+    },
     async search(keyword) {
       this.searchResult = []
       const baseUrl = 'https://www.googleapis.com/books/v1/volumes?'

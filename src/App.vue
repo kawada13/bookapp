@@ -7,6 +7,7 @@
        <router-view 
        @add-book-list="addbook"
        @update-book-info="updateBookInfo"
+       @delete-book="removebook"
        :books="books"
        />
       </v-container>
@@ -59,6 +60,7 @@ export default {
       this.goToEditPage(this.books.slice(-1)[0].id)
     },
     removebook(x) {
+      console.log(x);
       this.books.splice(x, 1);
       this.savebooks();
     },

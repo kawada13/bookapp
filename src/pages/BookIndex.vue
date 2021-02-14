@@ -23,6 +23,9 @@
                <v-btn :to="{name: 'BookEdit', params: {id: book.id}}" color="indigo" fab small dark>
                  <v-icon>mdi-pencil</v-icon>
                </v-btn>
+               <v-btn color="error" @click="deleteBook(i)">
+                 削除する
+               </v-btn>
              </v-card-actions>
            </v-col>
          </v-row>
@@ -36,7 +39,13 @@
 export default {
   props:{
     books: Array
-  }
+  },
+  methods: {
+    deleteBook(index) {
+      console.log(index)
+      this.$emit('delete-book', index)
+    }
+  },
 
 }
 </script>

@@ -2,6 +2,7 @@
   <v-app>
     <Header />
     <v-main>
+
       <v-container>
        <router-view 
        @add-book-list="addbook"
@@ -28,10 +29,10 @@ export default {
   data() {
     return {
       books: [],
-      newbook: null
+      newbook: null,
     }
   },
-  mounted() {
+  created() {
     if (localStorage.getItem('books')) {
       try {
         this.books = JSON.parse(localStorage.getItem('books'));

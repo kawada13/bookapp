@@ -1,13 +1,13 @@
 <template>
   <div>
-    bookedit
-    {{books[$route.params.id]}}
+    <h1>BookEdit</h1>
+    {{books[$route.params.id].title}}
     <v-btn
-          color="secondary"
-          to="/search"
-          >
-          検索に戻る
-          </v-btn>
+      color="secondary"
+      to="/search"
+      >
+      検索に戻る
+    </v-btn>
   </div>
 </template>
 

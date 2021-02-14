@@ -22,14 +22,14 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="date"
+                    v-model="book.readDate"
                     readonly
                     v-bind="attrs"
                     v-on="on"
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-model="date"
+                  v-model="book.readDate"
                   @input="menu = false"
                   locale="jp-ja"
                   :day-format="date => new Date(date).getDate()"
@@ -44,7 +44,7 @@
               </v-textarea>
               <v-card-actions>
                 <v-btn color="secondary" to="/">一覧に戻る</v-btn>
-                <v-btn color="info">保存する</v-btn>
+                <v-btn color="info" @click="updateBookInfo">保存する</v-btn>
               </v-card-actions>
             </v-col>
           </v-row>
@@ -69,6 +69,15 @@ export default {
   },
   created() {
     this.book = this.books[this.$route.params.id]
+  },
+  methods: {
+    updateBookInfo() {
+      this.$emit('update-book-info', {
+        id: this.$route.params.id,
+        readDate: this.book.readDate,
+        memo: this.book.memo
+      })
+    }
   },
 
 }
